@@ -915,34 +915,24 @@ void *process_poly(void *ptr)
 		{
 			//set the roots for the factors of a such that
 			//they will not be sieved.  we haven't found roots for them
-			printf("setting prime roots\n"); fflush(stdout);
 			set_aprime_roots(sconf, invalid_root_marker, poly->qlisort, poly->s, fb_sieve_p, 1);
-			printf("medsieve p\n"); fflush(stdout);
 			med_sieve_ptr(sieve, fb_sieve_p, fb, start_prime, blockinit);
-			printf("lpsieve p\n"); fflush(stdout);
 			lp_sieveblock(sieve, i, num_blocks, buckets, 0);
 
 			//set the roots for the factors of a to force the following routine
 			//to explicitly trial divide since we haven't found roots for them
-			printf("setting prime roots\n"); fflush(stdout);
 			set_aprime_roots(sconf, invalid_root_marker, poly->qlisort, poly->s, fb_sieve_p, 0);
-			printf("scan p\n"); fflush(stdout);
 			scan_ptr(i,0,sconf,dconf);
 
 			//set the roots for the factors of a such that
 			//they will not be sieved.  we haven't found roots for them
-			printf("setting prime roots\n"); fflush(stdout);
 			set_aprime_roots(sconf, invalid_root_marker, poly->qlisort, poly->s, fb_sieve_n, 1);
-			printf("medsieve n\n"); fflush(stdout);
 			med_sieve_ptr(sieve, fb_sieve_n, fb, start_prime, blockinit);
-			printf("lpsieve n\n"); fflush(stdout);
 			lp_sieveblock(sieve, i, num_blocks, buckets, 1);
 
 			//set the roots for the factors of a to force the following routine
 			//to explicitly trial divide since we haven't found roots for them
-			printf("setting prime roots\n"); fflush(stdout);
 			set_aprime_roots(sconf, invalid_root_marker, poly->qlisort, poly->s, fb_sieve_n, 0);
-			printf("scan p\n"); fflush(stdout);
 			scan_ptr(i,1,sconf,dconf);			
 
 		}
@@ -976,10 +966,8 @@ void *process_poly(void *ptr)
 
 		//next polynomial
 		//use the stored Bl's and the gray code to find the next b
-		printf("next B\n"); fflush(stdout);
 		nextB(dconf,sconf);
 		//and update the roots
-		printf("next roots\n"); fflush(stdout);
 		nextRoots_ptr(sconf, dconf);
 
 	}
